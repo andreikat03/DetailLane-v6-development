@@ -61,7 +61,7 @@ function createPhotoGateway({backend, allowedOrigins=[], randomUUID=()=>crypto.r
  }
  function headers(origin) {
   const h=new Headers({'Cache-Control':'private, no-store, max-age=0','Pragma':'no-cache','Expires':'0','Vary':'Authorization, Origin','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'",'Cross-Origin-Resource-Policy':'same-origin'});
-  if(origin&&origins.has(origin)){h.set('Access-Control-Allow-Origin',origin);h.set('Access-Control-Expose-Headers','X-Photo-Version, Content-Length');}
+  if(origin&&origins.has(origin)){h.set('Access-Control-Allow-Origin',origin);h.set('Access-Control-Expose-Headers','X-Photo-Version, Content-Length, Vary');}
   return h;
  }
  function json(body,status,origin){const h=headers(origin);h.set('Content-Type','application/json; charset=utf-8');return new Response(JSON.stringify(body),{status,headers:h});}
